@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Again - A Troll Platformer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Die Again</h1>
+            <div class="death-counter">Deaths: <span id="death-count">0</span></div>
+            <div class="level-indicator">Level: <span id="current-level">1</span></div>
+        </div>
+
+        <div class="game-wrapper">
+            <canvas id="gameCanvas"></canvas>
+
+            <div id="start-screen" class="overlay">
+                <h2>Die Again</h2>
+                <p>A Troll Platformer</p>
+                <button id="start-btn">Start Game</button>
+                <div class="controls-info">
+                    <p>Controls:</p>
+                    <p>Arrow Keys or WASD to Move</p>
+                    <p>Space to Jump</p>
+                </div>
+            </div>
+
+            <div id="death-screen" class="overlay hidden">
+                <h2>You Died Again!</h2>
+                <p id="death-message">That was unexpected...</p>
+                <button id="restart-btn">Try Again</button>
+            </div>
+
+            <div id="level-complete-screen" class="overlay hidden">
+                <h2>Level Complete!</h2>
+                <p>Prepare for more pain...</p>
+                <button id="next-level-btn">Next Level</button>
+            </div>
+
+            <div id="game-complete-screen" class="overlay hidden">
+                <h2>Congratulations!</h2>
+                <p>You survived all the traps!</p>
+                <p>Total Deaths: <span id="final-deaths">0</span></p>
+                <button id="play-again-btn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="mobile-controls">
+            <button id="left-btn" class="control-btn">←</button>
+            <button id="jump-btn" class="control-btn">JUMP</button>
+            <button id="right-btn" class="control-btn">→</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #fff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.game-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.game-header h1 {
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #00ff00;
+    color: #00ff00;
+}
+
+.death-counter, .level-indicator {
+    font-size: 0.8rem;
+}
+
+.game-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+    border: 2px solid rgba(0, 255, 0, 0.3);
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    background-color: #0a0a0a;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.overlay p {
+    margin-bottom: 20px;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: #ffffff;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #00ff00, #00cc00);
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.controls-info {
+    margin-top: 30px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.controls-info p {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.controls-info p:last-child {
+    margin-bottom: 0;
+}
+
+.mobile-controls {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 80px;
+    height: 80px;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #00ff00, #00cc00);
+    color: #000;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 8px;
+    }
+
+    .game-header h1 {
+        font-size: 1rem;
+    }
+
+    .death-counter, .level-indicator {
+        font-size: 0.7rem;
+    }
+
+    .mobile-controls {
+        display: flex;
+        padding: 10px 0;
+    }
+
+    .control-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1rem;
+    }
+
+    .overlay h2 {
+        font-size: 1.2rem;
+    }
+
+    .overlay p {
+        font-size: 0.6rem;
+    }
+
+    button {
+        font-size: 0.7rem;
+        padding: 12px 20px;
+    }
+
+    .controls-info {
+        padding: 10px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 5px;
+    }
+
+    .game-header h1 {
+        font-size: 0.9rem;
+    }
+
+    .death-counter, .level-indicator {
+        font-size: 0.6rem;
+    }
+
+    .control-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.6rem;
+        padding: 10px 15px;
+    }
+}
+
+/* Particle effect for death */
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFade 1s ease-out forwards;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
